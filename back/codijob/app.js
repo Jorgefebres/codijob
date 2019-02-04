@@ -23,6 +23,7 @@ global.db = db;
 
 //RUTAS
 var rutas_skill = require('./api/routes/Skill');
+var rutas_auth = require('./api/routes/Authentication');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -44,5 +45,6 @@ app.use(function (err, req, res, next) {
 //Cargando archivo de rutas
 
 app.use(rutas_skill);
+app.use(rutas_auth);
 
 module.exports = app;
