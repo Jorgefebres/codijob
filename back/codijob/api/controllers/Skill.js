@@ -9,6 +9,7 @@ var controller = {
     },
     getAll: (req,res)=>{
         let query = "SELECT * FROM `t_skill`";
+
         db.query(query, (err, result) => {
             if (err) {
                 console.log(err);
@@ -16,6 +17,7 @@ var controller = {
                     error:'Error al procesar la consulta'
                 })
             }
+
             var arreglo = [];
 
             result.forEach(skill => {

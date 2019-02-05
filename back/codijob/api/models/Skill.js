@@ -10,7 +10,7 @@ class Skill{
   set skill_id(newSkill_id){
     this._skill_id = newSkill_id;
   }
-
+  
   get skill_nom(){
     return this._skill_nom;
   }
