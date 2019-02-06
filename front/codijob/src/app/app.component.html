@@ -15,9 +15,14 @@
           <li><a href="#" class="fa fa-twitter"></a></li>
           <li><a href="#" class="fa fa-google-plus"></a></li>
         </ul>
-        <ul class="authentication">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Register</a></li>
+
+        <ul *ngIf="!_auth.isLoggedIn()" class="authentication">
+          <li><a routerLink="/login">Login</a></li>
+          <li><a routerLink="/registro">Register</a></li>
+        </ul>
+        <ul *ngIf="_auth.isLoggedIn()" class="authentication">
+          <li><a routerLink="/perfil">{{_auth.getUserDetails().email}}</a></li>
+          <li><a (click)="_auth.logout()">Cerrar Sesión</a></li>
         </ul>
         <div class="language"> <a href="#" class="toggle"><img src="assets/images/flags/32/US.png" alt=""> ENG</a>
           <ul>

@@ -28,7 +28,7 @@ passport.use(new LocalStrategy({
             })
             .catch((error)=>{
                 if (error) {
-                    return done(err);
+                    return done('rayos '+err);
                 }    
             });    
   }
