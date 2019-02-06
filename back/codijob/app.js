@@ -5,8 +5,7 @@ var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
 var passport = require('passport');
-
-
+require('./api/config/passport');
 
 var app = express();
 
@@ -27,7 +26,8 @@ global.db = db;
 //RUTAS
 var rutas_skill = require('./api/routes/Skill');
 var rutas_auth = require('./api/routes/Authentication');
-
+//Cargando archivo de rutas
+app.use(passport.initialize());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -45,8 +45,7 @@ app.use(function (err, req, res, next) {
     }
 });
 
-//Cargando archivo de rutas
-app.use(passport.initialize());
+
 
 app.use('/api',rutas_skill);
 app.use('/api',rutas_auth);

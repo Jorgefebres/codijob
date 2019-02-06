@@ -3,29 +3,25 @@ import {AuthenticationService} from '../../../services/authentication.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class LoginComponent implements OnInit {
   credentials = {
     email: '',
-    type: '',
     password: ''
   };
-  constructor(private _auth: AuthenticationService, private _router: Router) {}
+  constructor(private _auth: AuthenticationService, private _router: Router) { }
 
   ngOnInit() {
   }
 
-
-  register() {
-    this._auth.register(this.credentials).subscribe(() => {
-      // console.log(response);
+  login() {
+    this._auth.login(this.credentials).subscribe(() => {
       this._router.navigateByUrl('/perfil');
     }, (err) => {
       console.error(err);
     });
   }
-
 }
