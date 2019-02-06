@@ -1,11 +1,14 @@
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
+const UsuSkillDTO = require('../dto/UsuSkillDTO');
+
 class Usuario{
     constructor(newUsuEmail){
       this._usu_email = newUsuEmail;
       this._usu_hash = '';
       this._usu_salt = '';
       this._usu_id = '';
+      this._usu_skills = [];
     }
     
     setPassword(password){
@@ -57,6 +60,21 @@ class Usuario{
             type:'profesional',
             exp: parseInt(expiry.getTime() / 1000),
         }, "123"); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    }
+
+    setAllUserData(){
+
+      return new Promise((resolve,reject)=>{
+        UsuSkillDTO.getSkillsByUsuId(this._usu_id).then((skills)=>{
+          console.log("Se han setteado los skills del usuario correctamente");
+          this._usu_skills = skills;
+          resolve(this);
+        }).catch((error)=>{
+          console.log("Ocurrió un error al intentar settear los skills del usuario");
+          console.log(error);
+          reject();
+        })
+      })
     }
   
   }

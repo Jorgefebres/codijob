@@ -10,7 +10,7 @@ var controller = {
                     .then((response)=>{
                         //reponse es el token del usuario
                         res.json({
-                            "token" : response
+                            "token" : response,
                           });
                     }).catch((error)=>{
                         console.log(error);
@@ -41,8 +41,11 @@ var controller = {
             // Otherwise continue
             UsuarioDTO.getUserByField('usu_id',req.payload.id)
                             .then((usuario)=>{
-                                res.status(200).json(usuario);
-                            });
+                                return usuario.setAllUserData();
+                            })
+                            .then((usuario)=>{
+                                res.status(200).json({usuario});
+                            })
         }
     }
 };

@@ -100,6 +100,6 @@ export class AuthenticationService {
   }
 
   public profile(): Observable<any> {
-    return this.request('get', 'profile');
+    return this._http.get(`http://localhost:3700/api/profile`, { headers: { Authorization: `Bearer ${this.getToken()}` }});
   }
 }

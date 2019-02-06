@@ -7,13 +7,13 @@ import { AuthenticationService } from '../../../services/authentication.service'
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  details = {};
+  usuario = {};
   constructor(private _auth:AuthenticationService) { }
 
   ngOnInit() {
     this._auth.profile().subscribe(user => {
       console.log(user);
-      this.details = user;
+      this.usuario = user.usuario;
     }, (err) => {
       console.error(err);
     });

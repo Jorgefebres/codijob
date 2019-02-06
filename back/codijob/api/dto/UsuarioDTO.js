@@ -47,7 +47,6 @@ class UsuarioDTO{
                     return reject("error");
                 }
                 if(result.length===0){
-                    console.log("putos");
                     
                     return reject("asdasd");
                 }
