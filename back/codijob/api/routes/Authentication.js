@@ -9,6 +9,6 @@ var auth = jwt({
 });
 
 router.post('/register',AuthenticationController.register);
-router.get('/profile',auth,AuthenticationController.getUserInfo);
-router.post('/login', AuthenticationController.login);
+router.get('/getUserInfo',auth,AuthenticationController.getUserInfo);
+
 module.exports = router;

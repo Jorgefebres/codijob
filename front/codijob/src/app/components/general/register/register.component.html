@@ -30,9 +30,9 @@
                         <form (submit)="register()">
                           <input name="type" type="text" placeholder="Tipo de Usuario Ejm: Profesional" [(ngModel)]="credentials.type">
                           <input  name="email" type="email" placeholder="Email Address" [(ngModel)]="credentials.email">
-                          <input name="password" type="password" placeholder="Password" [(ngModel)]="credentials.password">
+                          <input name="password" placeholder="Password" [(ngModel)]="credentials.password">
                           <button type="submit" (click)="register()">Register</button>
-                          
+                          <div class="login-with"> <span>Or login with:</span> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-google"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> </div>
                         </form>
                       </div>
                       

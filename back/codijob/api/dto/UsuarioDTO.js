@@ -44,24 +44,21 @@ class UsuarioDTO{
         return new Promise((resolve,reject)=>{
             db.query(query, (err, result) => {
                 if (err) {
-                    return reject("error");
+                    reject("error");
                 }
-                if(result.length===0){
-                    console.log("putos");
-                    
-                    return reject("asdasd");
+                if(result.length == 0){
+                    resolve(null);
                 }
-                console.log(result.length)
+
                 let objUsuario = new Usuario(result[0].usu_email);
                 objUsuario.usu_salt = result[0].usu_salt;
                 objUsuario.usu_hash = result[0].usu_hash;
                 objUsuario.usu_id = result[0].usu_id;
                 console.log(`encontrado el usuario con campo ${campo} y valor ${valor}`);
-                return resolve(objUsuario);
+                resolve(objUsuario);
             });
         });
     }
-     
       
   }
   

@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {RegisterComponent} from './components/general/register/register.component';
 import {MainComponent} from './components/general/main/main.component';
 import {PerfilComponent} from './components/usuario/perfil/perfil.component';
-import { LoginComponent } from './components/general/login/login.component';
-import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -17,12 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    component: PerfilComponent,
-    canActivate:[AuthGuardService]
-  },
-  {
-    path: 'login',
-    component: LoginComponent
+    component: PerfilComponent
   }
 ];
 

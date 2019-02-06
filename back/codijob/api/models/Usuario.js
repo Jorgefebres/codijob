@@ -41,7 +41,7 @@ class Usuario{
       return this._usu_email;
     }
 
-    validatePassword(password){
+    static validatePassword(password){
       var hash = crypto.pbkdf2Sync(password, this.usu_salt, 1000, 64, 'sha512').toString('hex');
       return this.usu_hash === hash;
     }
