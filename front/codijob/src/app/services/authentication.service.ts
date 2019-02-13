@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export interface UserDetails {
   id: any;
   email: any;
-  type: any;
+  name: any;
   exp: any;
 }
 
@@ -80,19 +80,31 @@ export class AuthenticationService {
     }
 
     const request = base.pipe(
-      map((data: TokenResponse) => {
-        if (data.token) {
-          this.saveToken(data.token);
-        }
-        return data;
-      })
-    );
+                                map((data: TokenResponse) => {
+                                  if (data.token) {
+                                    this.saveToken(data.token);
+                                  }
+                                  return data;
+                                })
+                              );
 
     return request;
   }
 
-  public register(user: TokenPayload): Observable<any> {
-    return this.request('post', 'register', user);
+  public register(user: TokenPayload): Promise<any> {
+    
+    return new Promise((resolve, reject)=>{
+      this._http.post(`http://localhost:3700/api/register`, user).subscribe((data:any)=>{
+        console.log(data);
+        if (data.token) {
+          this.saveToken(data.token);
+          console.log("resolve ejecutado");
+          resolve();
+        }
+        console.log("reject ejecutado");
+        reject();
+      });
+    })
   }
 
   public login(user: TokenPayload): Observable<any> {

@@ -8,12 +8,20 @@ class Usuario{
       this._usu_hash = '';
       this._usu_salt = '';
       this._usu_id = '';
+      this._usu_nom = '';
       this._usu_skills = [];
     }
     
     setPassword(password){
         this._usu_salt = crypto.randomBytes(16).toString('hex');
         this._usu_hash = crypto.pbkdf2Sync(password, this._usu_salt, 1000, 64, 'sha512').toString('hex');
+    }
+
+    set usu_nom(newUsuNom){
+      this._usu_nom = newUsuNom;
+    }
+    get usu_nom(){
+      return this._usu_nom;
     }
 
     set usu_id(newUsuId){
@@ -57,7 +65,7 @@ class Usuario{
         {
             id: this.usu_id,
             email: this.usu_email,
-            type:'profesional',
+            name:this.usu_nom,
             exp: parseInt(expiry.getTime() / 1000),
         }, "123"); // DO NOT KEEP YOUR SECRET IN THE CODE!
     }

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   credentials = {
     email: '',
-    type: '',
+    name: '',
     password: ''
   };
   constructor(private _auth: AuthenticationService, private _router: Router) {}
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
 
   register() {
-    this._auth.register(this.credentials).subscribe(() => {
+    this._auth.register(this.credentials).then(() => {
       // console.log(response);
       this._router.navigateByUrl('/perfil');
     }, (err) => {

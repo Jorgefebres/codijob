@@ -6,7 +6,7 @@ const Usuario = require('../models/Usuario');
 
 var controller = {
     register: function(req,res){
-        UsuarioDTO.createUser(req.body.email,req.body.password)
+        UsuarioDTO.createUser(req.body.email,req.body.password,req.body.name)
                     .then((response)=>{
                         //reponse es el token del usuario
                         res.json({
